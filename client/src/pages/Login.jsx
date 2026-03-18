@@ -1,0 +1,29 @@
+import { useState } from "react";
+import API from "../services/api";
+import { useNavigate } from "react-router-dom";
+
+export default function Login() {
+  const [form, setForm] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    const res = await API.post("/api/auth/login", form);
+    localStorage.setItem("token", res.data.token);
+    alert("Logged in!");
+    navigate("/dashboard"); 
+  };
+
+  return (
+    <div>
+      <input
+        placeholder="Email"
+        onChange={(e) => setForm({ ...form, email: e.target.value })}
+      />
+      <input
+        placeholder="Password"
+        onChange={(e) => setForm({ ...form, password: e.target.value })}
+      />
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+}
