@@ -6,9 +6,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const connectDB = require("./config/db");
+
+connectDB();
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+const authRoutes = require("./routes/authRoutes");
+
+app.use("/api/auth", authRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {
