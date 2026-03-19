@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Home from "./pages/homePage";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import CodeAnalyzer from "./pages/CodeAnalyzer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/analyze" element={<CodeAnalyzer />} />
       </Routes>
     </Router>
   );
