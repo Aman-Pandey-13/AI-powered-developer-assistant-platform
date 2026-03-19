@@ -17,6 +17,10 @@ const authRoutes = require("./routes/authRoutes");
 
 app.use("/api/auth", authRoutes);
 
+const analysisRoutes = require("./routes/analysisRoutes");
+
+app.use("/api", analysisRoutes);
+
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
