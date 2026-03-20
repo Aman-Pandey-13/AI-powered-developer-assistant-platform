@@ -2,18 +2,20 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/homePage";
+import CodeAnalyzer from "./pages/CodeAnalyzer";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
-import CodeAnalyzer from "./pages/CodeAnalyzer";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Public Routes */}
+        <Route path="/" element={<h1>Welcome to DevInsight AI</h1>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Protected Routes */}
         <Route
           path="/dashboard"
           element={
@@ -22,7 +24,15 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/analyze" element={<CodeAnalyzer />} />
+
+        <Route
+          path="/analyze"
+          element={
+            <PrivateRoute>
+              <CodeAnalyzer />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );

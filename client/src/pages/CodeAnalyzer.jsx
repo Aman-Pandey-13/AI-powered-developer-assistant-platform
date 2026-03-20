@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../services/api";
+import History from "../components/History";
 
 export default function CodeAnalyzer() {
   const [code, setCode] = useState("");
@@ -41,6 +42,9 @@ export default function CodeAnalyzer() {
           <pre>{JSON.stringify(result, null, 2)}</pre>
         </div>
       )}
+
+      {/* ✅ History component */}
+      <History />
     </div>
   );
 }
