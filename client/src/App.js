@@ -5,19 +5,21 @@ import Register from "./pages/Register";
 import CodeAnalyzer from "./pages/CodeAnalyzer";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<h1>Welcome to DevInsight AI</h1>} />
+        {/* <Route path="/" element={<h1>Welcome to DevInsight AI</h1>} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
         {/* Protected Routes */}
         <Route
-          path="/dashboard"
+          path="/"
           element={
             <PrivateRoute>
               <Dashboard />

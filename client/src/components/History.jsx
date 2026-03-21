@@ -18,27 +18,29 @@ export default function History() {
   };
 
   return (
-    <div style={{ marginTop: "30px" }}>
-      <h3>Analysis History</h3>
+    <div
+      
+      className="bg-gray-800 p-4 rounded-lg shadow hover:scale-105 transition"
+    >
+      <h2 className="text-2xl mb-4">📜 Analysis History</h2>
 
-      {history.length === 0 && <p>No history yet</p>}
+      {history.length === 0 && (
+        <p className="text-gray-400">
+          No analysis yet. Start by analyzing code 🚀
+        </p>
+      )}
 
-      {history.map((item, index) => (
-        <div
-          key={index}
-          style={{
-            border: "1px solid gray",
-            padding: "10px",
-            margin: "10px 0",
-          }}
-        >
-          <h4>Code:</h4>
-          <pre>{item.code}</pre>
+      <div className="space-y-4">
+        {history.map((item, index) => (
+          <div key={index} className="bg-gray-800 p-4 rounded">
+            <p className="text-sm text-gray-400">Code:</p>
+            <pre className="text-green-400">{item.code}</pre>
 
-          <h4>Result:</h4>
-          <pre>{item.result}</pre>
-        </div>
-      ))}
+            <p className="text-sm text-gray-400 mt-2">Result:</p>
+            <pre>{item.result}</pre>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
