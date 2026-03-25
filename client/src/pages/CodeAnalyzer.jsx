@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../services/api";
 import History from "../components/History";
+import Navbar from "../components/Navbar";
 
 export default function CodeAnalyzer() {
   const [code, setCode] = useState("");
@@ -23,45 +24,48 @@ export default function CodeAnalyzer() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-3xl font-bold mb-6">🚀 DevInsight AI</h1>
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-gray-900 text-white p-8">
+        <h1 className="text-3xl font-bold mb-6">🚀 DevInsight AI</h1>
 
-      <div className="grid grid-cols-2 gap-6">
-        {/* LEFT SIDE */}
-        <div>
-          <h2 className="text-xl mb-2">Code Editor</h2>
+        <div className="grid grid-cols-2 gap-6">
+          {/* LEFT SIDE */}
+          <div>
+            <h2 className="text-xl mb-2">Code Editor</h2>
 
-          <textarea
-            className="w-full h-64 p-3 rounded bg-gray-800 border border-gray-700"
-            placeholder="Paste your code here..."
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-          />
+            <textarea
+              className="w-full h-64 p-3 rounded bg-gray-800 border border-gray-700"
+              placeholder="Paste your code here..."
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
 
-          <button
-            onClick={handleAnalyze}
-            className="mt-4 bg-blue-500 px-5 py-2 rounded-lg hover:bg-blue-600 transition"
-          >
-            🚀 Analyze Code
-          </button>
-        </div>
+            <button
+              onClick={handleAnalyze}
+              className="mt-4 bg-blue-500 px-5 py-2 rounded-lg hover:bg-blue-600 transition"
+            >
+              🚀 Analyze Code
+            </button>
+          </div>
 
-        {/* RIGHT SIDE */}
-        <div>
-          <h2 className="text-xl mb-2">AI Result</h2>
+          {/* RIGHT SIDE */}
+          <div>
+            <h2 className="text-xl mb-2">AI Result</h2>
 
-          <div className="bg-gray-800 p-4 rounded h-64 overflow-auto">
-            {loading
-              ? "Analyzing..."
-              : result || "AI output will appear here..."}
+            <div className="bg-gray-800 p-4 rounded h-64 overflow-auto">
+              {loading
+                ? "Analyzing..."
+                : result || "AI output will appear here..."}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* HISTORY */}
-      <div className="mt-10">
-        <History />
+        {/* HISTORY */}
+        <div className="mt-10">
+          <History />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
